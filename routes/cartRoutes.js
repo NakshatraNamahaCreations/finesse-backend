@@ -11,7 +11,8 @@ const {
 
 router.post("/add", authMiddleware, addToCart);
 router.get("/", authMiddleware, getCart);
-router.delete("/:id", authMiddleware, removeFromCart);
 router.delete("/clear/all", authMiddleware, clearCart);
+
+router.delete("/:id", authMiddleware, removeFromCart);
 
 module.exports = router;
