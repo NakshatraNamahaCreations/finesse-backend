@@ -14,7 +14,7 @@
   "http://localhost:5173",      // Vite
   "http://localhost:3000",      // CRA (if used)
   "https://finesse2.netlify.app", // 🔥 replace with your real Netlify URL
-  "https://admin-finesse.netlify.app/"
+  "https://admin-finesse.netlify.app"
 ];
 
 app.use(
