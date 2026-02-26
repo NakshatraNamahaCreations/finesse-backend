@@ -45,6 +45,7 @@ app.use(
   app.use("/api/user", require("./routes/userRoutes"));
   app.use("/api/orders", require("./routes/orderRoutes"));
   app.use("/api/address", require("./routes/addressRoutes"));
+  app.use("/api/payment", require("./routes/paymentRoutes"))
 
 
   /* TEST ROUTE */
