@@ -273,3 +273,44 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+/* ================= ADD REVIEW ================= */
+
+exports.addReview = async (req, res) => {
+  try {
+
+    const { name, rating, comment } = req.body;
+
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found"
+      });
+    }
+
+    const review = {
+      name,
+      rating: Number(rating),
+      comment
+    };
+
+    product.reviews.push(review);
+
+    await product.save();
+
+    res.json({
+      message: "Review added successfully",
+      reviews: product.reviews
+    });
+
+  } catch (error) {
+
+    console.log("ADD REVIEW ERROR:", error);
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+};

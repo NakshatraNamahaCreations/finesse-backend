@@ -7,6 +7,7 @@ const {
   getProduct,
   updateProduct,
   deleteProduct,
+  addReview
 } = require("../controllers/productController");
 
 const upload = require("../middleware/upload");
@@ -16,5 +17,6 @@ router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.put("/:id", upload.array("images", 10), updateProduct);
 router.delete("/:id", deleteProduct);
+router.post("/review/:id", addReview);
 
 module.exports = router;
