@@ -64,25 +64,16 @@ const productSchema = new mongoose.Schema(
     variants: [variantSchema],
 
     /* INGREDIENTS */
-    ingredients: [
-      {
-        type: String
-      }
-    ],
+    ingredients: [String],
 
     /* HOW TO USE */
-    howToUse: [
-      {
-        type: String
-      }
-    ],
+    howToUse: [String],
 
     /* WORKS BEST WITH */
-    worksBestWith: [
-      {
-        type: String
-      }
-    ],
+    worksBestWith: [String],
+
+    /* PRODUCT HIGHLIGHTS */
+    highlights: [String],
 
     /* REVIEWS */
     reviews: [reviewSchema],
