@@ -85,6 +85,18 @@ if (req.body.highlights) {
       faqs = JSON.parse(req.body.faqs);
     }
 
+    /* ---------- REVIEWS ---------- */
+
+let reviews = [];
+
+if (req.body.reviews) {
+  try {
+    reviews = JSON.parse(req.body.reviews);
+  } catch (err) {
+    console.log("Review parse error:", err);
+  }
+}
+
     /* ---------- IMAGES ---------- */
 
     let images = [];
@@ -110,7 +122,8 @@ if (req.body.highlights) {
       howToUse,
       worksBestWith,
       highlights, 
-      faqs
+      faqs,
+      reviews  
     });
 
     await product.save();
@@ -216,6 +229,10 @@ exports.updateProduct = async (req, res) => {
   ? JSON.parse(req.body.highlights)
   : existingProduct.highlights;
 
+  let reviews = req.body.reviews
+  ? JSON.parse(req.body.reviews)
+  : existingProduct.reviews;
+
     let faqs = req.body.faqs
       ? JSON.parse(req.body.faqs)
       : existingProduct.faqs;
@@ -244,8 +261,9 @@ exports.updateProduct = async (req, res) => {
         ingredients,
         howToUse,
         worksBestWith,
-          highlights,  
-        faqs
+         highlights,
+faqs,
+reviews
       },
       { new: true }
     ).populate("category", "name status");
