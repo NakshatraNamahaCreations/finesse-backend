@@ -70,6 +70,14 @@ exports.addProduct = async (req, res) => {
       worksBestWith = JSON.parse(req.body.worksBestWith);
     }
 
+    /* ---------- HIGHLIGHTS ---------- */
+
+let highlights = [];
+
+if (req.body.highlights) {
+  highlights = JSON.parse(req.body.highlights);
+}
+
     /* ---------- FAQ ---------- */
 
     let faqs = [];
@@ -101,6 +109,7 @@ exports.addProduct = async (req, res) => {
       ingredients,
       howToUse,
       worksBestWith,
+      highlights, 
       faqs
     });
 
@@ -203,6 +212,10 @@ exports.updateProduct = async (req, res) => {
       ? JSON.parse(req.body.worksBestWith)
       : existingProduct.worksBestWith;
 
+      let highlights = req.body.highlights
+  ? JSON.parse(req.body.highlights)
+  : existingProduct.highlights;
+
     let faqs = req.body.faqs
       ? JSON.parse(req.body.faqs)
       : existingProduct.faqs;
@@ -231,6 +244,7 @@ exports.updateProduct = async (req, res) => {
         ingredients,
         howToUse,
         worksBestWith,
+          highlights,  
         faqs
       },
       { new: true }
