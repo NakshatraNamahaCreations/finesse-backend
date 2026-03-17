@@ -78,6 +78,18 @@ if (req.body.highlights) {
   highlights = JSON.parse(req.body.highlights);
 }
 
+/* ---------- BADGES ---------- */
+
+let badges = [];
+
+if (req.body.badges) {
+  try {
+    badges = JSON.parse(req.body.badges);
+  } catch (err) {
+    console.log("Badges parse error:", err);
+  }
+}
+
     /* ---------- FAQ ---------- */
 
     let faqs = [];
@@ -122,6 +134,7 @@ if (req.body.reviews) {
       howToUse,
       worksBestWith,
       highlights, 
+      badges, 
       faqs,
       reviews  
     });
@@ -237,6 +250,10 @@ exports.updateProduct = async (req, res) => {
       ? JSON.parse(req.body.faqs)
       : existingProduct.faqs;
 
+      let badges = req.body.badges
+  ? JSON.parse(req.body.badges)
+  : existingProduct.badges;
+
     /* ---------- IMAGES ---------- */
 
     let images = existingProduct.images;
@@ -259,6 +276,7 @@ exports.updateProduct = async (req, res) => {
         images,
 
         ingredients,
+         badges, 
         howToUse,
         worksBestWith,
          highlights,

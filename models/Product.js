@@ -75,6 +75,9 @@ const productSchema = new mongoose.Schema(
     /* PRODUCT HIGHLIGHTS */
     highlights: [String],
 
+    /* BADGE*/
+     badges: [String],
+
     /* REVIEWS */
     reviews: [reviewSchema],
 
